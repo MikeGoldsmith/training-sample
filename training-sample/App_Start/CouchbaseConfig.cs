@@ -11,9 +11,12 @@ namespace training_sample
         {
             var config = new ClientConfiguration
             {
-                Servers = new List<Uri> {new Uri("couchbase://19.168.1.104")}
+                Servers = new List<Uri> {new Uri("couchbase://192.168.1.104")}
             };
             ClusterHelper.Initialize(config);
+
+            // force connection to open
+            ClusterHelper.Get().OpenBucket("default");
         }
 
         public static void CleanUp()
